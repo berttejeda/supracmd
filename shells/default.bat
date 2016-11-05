@@ -12,8 +12,8 @@ set LF=^
 :: Add this file as a REG_SZ/REG_EXPAND_SZ registry variables in HKEY_LOCAL_MACHINE\Software\Microsoft\Command or Processor\AutoRun HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun
 endlocal
 :: Doskey Alias Declarations
-doskey /macrofile=%~dp0..\macros/default.mac
-doskey /macrofile=%~dp0..\macros/admin.mac
+doskey /macrofile=%~dp0macros/default.mac
+doskey /macrofile=%~dp0macros/admin.mac
 :: Announce relevant messages
 call :echo_hotkeys
 :: Start shell and read config
