@@ -1,9 +1,17 @@
 @echo off
+copy /Y NUL "c:\%USERPROFILE%\.supracmd.writable" > NUL 2>&1 && set WRITEOK=TRUE
+IF NOT DEFINED  WRITEOK call :make_local_home
 set gitpath="C:\Program Files\Git\usr\bin\bash.exe"
 ::set path=%path%;%~dp0..\bin;"C:\Program Files\Git\bin";
 dir %USERPROFILE%\.bash_profile > nul 2>&1 || call :set_bash_profile
 findstr PATH %USERPROFILE%\.bash_profile > nul 2>&1 || call :set_paths
 dir %gitpath% > nul 2>&1 && %gitpath% --login -i || call :install_git
+goto:eof
+
+
+:make_local_home
+set USERPROFILE="%~dp0\..\.Users\%USERNAME%"
+IF NOT EXIST "%USERPROFILE%" mkdir %USERPROFILE% > nul 2>&1
 goto:eof
 
 :set_bash_profile
@@ -16,6 +24,7 @@ echo echo -e New to Git?  >> %USERPROFILE%\.bash_profile
 echo echo -e Be sure to check out git - the simple guide at  >> %USERPROFILE%\.bash_profile
 echo echo -e "${blue}${On_White}http://rogerdudler.github.io/git-guide/" >> %USERPROFILE%\.bash_profile
 echo echo -e "\e[0m" >> %USERPROFILE%\.bash_profile
+goto:eof
 
 :set_paths
 echo Adding git paths to bash profile
