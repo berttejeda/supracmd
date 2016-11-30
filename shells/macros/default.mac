@@ -15,6 +15,7 @@ grep    = find $*
 halt=shutdown -s -f -t $*
 history = /history
 kill    = taskkill /PID $*
+pkill   = taskkill /f /im $*
 ls      = dir $*
 man     = help $*
 mv      = move $*
