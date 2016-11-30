@@ -1,5 +1,5 @@
 @echo off
-copy /Y NUL "c:\%USERPROFILE%\.supracmd.writable" > NUL 2>&1 && set WRITEOK=TRUE
+copy /Y NUL "%USERPROFILE%\.supracmd.writable" > NUL 2>&1 && set WRITEOK=TRUE
 IF NOT DEFINED  WRITEOK call :make_local_home
 set gitpath="C:\Program Files\Git\usr\bin\bash.exe"
 ::set path=%path%;%~dp0..\bin;"C:\Program Files\Git\bin";
