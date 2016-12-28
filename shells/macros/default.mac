@@ -11,6 +11,7 @@ cp      = copy $*
 cpr     = xcopy $*
 dir.copy=robocopy "$1" "$2" /S /E /XJ /COPY:DATSOU /R:1 /W:30 /tee /log:"%USERPROFILE%\robocopy.%time:~0,2%%time:~3,2%%time:~9,2%.log"
 dir.delete=echo 'Recursively Deleting $* ... $T rmdir /s /q $* $T echo Finished deleting $*
+dir.delete.here=echo "Recursively Deleting directories in current folder ..." $T for /f "tokens=*" %d in ('dir /b') do rmdir /s /q "%d
 grep    = find $*
 halt=shutdown -s -f -t $*
 history = /history
