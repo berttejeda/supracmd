@@ -50,3 +50,9 @@ setup/
 .idea/
 .build/
 tmp/
+
+# Special Folders
+.Users
+
+# Console2 files
+console.xml
